@@ -25,7 +25,8 @@ public class UserAltDAOImpl implements UserAltDAO{
 		// TODO Auto-generated method stub
 		
 		Session session = sessionFactory.openSession();
-		
+		User user = null;
+		try {
 		TypedQuery<User> query = session.createQuery("select u from kullanici u where u.useremail= :email AND u.user_password= :password ");
 		
 		query.setParameter("email", email);
@@ -33,8 +34,8 @@ public class UserAltDAOImpl implements UserAltDAO{
 		query.setParameter("password", password);
 	
 		System.out.println(password);
-		User user = null;
-		try {
+		
+		
 			user = query.getSingleResult();
 			
 		
@@ -43,6 +44,9 @@ public class UserAltDAOImpl implements UserAltDAO{
 			//log.error("Kullanıcı Sorgulanırken hata meydana geldi ve yakalndı "+e.getMessage());
 			// TODO: handle exception
 			System.out.println(e.getMessage());
+			System.out.println("hata yakaladım");
+			
+			return user;
 			
 		}
 		

@@ -2,6 +2,9 @@ package com.proje.socialmedia.app.controller;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.time.LocalDate;
+import java.util.Date;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -11,10 +14,12 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.proje.socialmedia.app.model.User;
 import com.proje.socialmedia.app.service.UserService;
@@ -98,4 +103,102 @@ public class IndexController {
 		return "redirect:/login";
 	}
 	
+
+	
+	
+	@GetMapping("/signUp")
+	public String signup(Model theModel,@RequestParam(name="succ",required = false) String succ,
+	@RequestParam(name="serr",required = false) String serr,@RequestParam(name="err",required = false) String err		) {
+		
+		User user = new User();
+		
+		theModel.addAttribute("user",user);
+		
+		return "signup";
+	}
+	
+	@PostMapping("/signUpPost")
+	public String signUpPost(@ModelAttribute(name="user") User theUser, @RequestParam(name="profilephoto",required = false) MultipartFile file,
+			@RequestParam(name="userbof",required = true) String userbof) {
+		
+		
+		
+		if(theUser != null && userbof != null) {
+			
+			User newUser = new User();
+			
+		
+			
+			String[] values = userbof.split("-"); // yil ay gun
+			
+			Date newDate = null;
+			if(values[2].equals("31")) {
+				newDate= new Date(Integer.parseInt( values[0]), Integer.parseInt(values[1]), 1);
+			}
+			
+		
+			 newDate = new Date(Integer.parseInt( values[0]), Integer.parseInt(values[1]), Integer.parseInt(values[2]));
+		
+			System.out.println("========");
+			System.out.println("Date "+newDate.getDate());
+			System.out.println("Day "+newDate.getDay());
+			System.out.println("Month "+newDate.getMonth());
+			System.out.println("Year "+newDate.getYear());
+			
+			
+			
+			
+			newUser.setUser_bof(newDate);
+			newUser.getUser_bof().setYear(newDate.getYear() -1900);
+			newUser.setUseremail(theUser.getUseremail());
+			
+			newUser.setUsername(theUser.getUsername());
+			
+			MessageDigest md;
+			
+			
+			
+			try {
+				md = MessageDigest.getInstance("MD5");
+				
+				byte[] dizi= md.digest(theUser.getUser_password().getBytes());
+			
+		
+			
+				BigInteger encryptedPassword = new BigInteger(1, dizi);
+				
+				String hashPassword = encryptedPassword.toString();
+				
+	
+				newUser.setUser_password(hashPassword);
+				
+				if(file != null ) {
+					String fileUrl = StringUtils.cleanPath(file.getOriginalFilename());
+					
+					newUser.setUser_photo(fileUrl);
+					
+				}
+				
+				
+				
+				if(userService.saveUser(newUser))
+					return "redirect:/login?succ=1";
+				
+				
+				return "redirect:/signUp?serr=1";
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				return "redirect:/signUp?serr=1";
+				
+			}
+			
+			
+			
+		}
+		
+		
+		return "redirect:/signUp?serr=1";
+		
+	}
+
 }

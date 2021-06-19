@@ -1,0 +1,67 @@
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Noto+Sans+TC:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Noto+Sans+TC:wght@500&display=swap");
+input[type=text],
+input[type=email],
+input[type=password],
+input[type=date],
+input[type=file] {
+  background-color: #66de93;
+  border-radius: 0.3rem;
+  padding: 0.3rem;
+  text-align: center;
+  font-family: "Noto Sans TC", sans-serif;
+  outline: none;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+input[type=text]:hover,
+input[type=email]:hover,
+input[type=password]:hover,
+input[type=date]:hover,
+input[type=file]:hover {
+  -webkit-transition: all 1s;
+  transition: all 1s;
+  outline: none;
+  background: #cfdac8;
+}
+
+button[type=submit] {
+  background: #cfdac8;
+  font-family: "Nanum Gothic", sans-serif;
+  padding: 0.4rem;
+  border-radius: 0.5rem;
+  outline: none;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+button[type=submit]:hover {
+  -webkit-transition: all 1s;
+  transition: all 1s;
+  background: #66de93;
+  cursor: pointer;
+}
+
+body {
+  background-color: #66de93;
+}
+
+#sign-container {
+  background-color: #cfdac8;
+  min-width: 40vw;
+  max-width: 40vw;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 12%;
+  border-radius: 1rem;
+  border: 3px solid black;
+}
+#sign-container h5 {
+  margin-top: 3rem;
+  font-family: "Noto Sans TC", sans-serif;
+  font-weight: bolder;
+  letter-spacing: 1px;
+  text-decoration: underline;
+}
+#sign-container button {
+  margin-bottom: 2rem;
+}

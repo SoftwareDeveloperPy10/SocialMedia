@@ -1,0 +1,32 @@
+@import "./base/typography";
+@import "./abstract/variables";
+@import "./component/inputs";
+
+body {
+    background-color: $primary-color;
+}
+
+#sign-container {
+    background-color: $secondary-color;
+    min-width: 40vw;
+    max-width: 40vw;
+
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 12%;
+
+    border-radius: 1rem;
+    border: 3px solid black;
+
+    h5 {
+        margin-top: 3rem;
+        font-family: $primary-font;
+        font-weight: bolder;
+        letter-spacing: 1px;
+        text-decoration: underline;
+    }
+
+    button {
+        margin-bottom: 2rem;
+    }
+}

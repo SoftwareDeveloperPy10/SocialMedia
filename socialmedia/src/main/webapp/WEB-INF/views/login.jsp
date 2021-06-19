@@ -29,13 +29,53 @@
 <body>
 
     <div class="container-fluid">
-
+	
+		
+	
         <div id="login-container" class="text-center">
-
+	
+			<%
+				if(request.getParameter("serr") != null && request.getParameter("serr").equals("1")){
+			%>
+			
+			<div class="alert alert-warning alert-dismissible fade show" role="alert">
+			  
+			   <strong> Error encountered while signing up </strong>
+			  
+			  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			    <span aria-hidden="true">&times;</span>
+			  </button>
+			</div>
+			
+			<% } else if( request.getParameter("err") != null && request.getParameter("err").equals("1")){ %>
+	
+				<div class="alert alert-warning alert-dismissible fade show" role="alert">
+				  
+				   <strong> Error encountered while signing in </strong>
+				  
+				  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				    <span aria-hidden="true">&times;</span>
+				  </button>
+				</div>
+		
+			<% } else if( request.getParameter("succ") != null && request.getParameter("succ").equals("1")) {%>
+			<div class="alert alert-success alert-dismissible fade show" role="alert">
+			  
+			   <strong> You have successfully sign up! </strong>
+			  
+			  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			    <span aria-hidden="true">&times;</span>
+			  </button>
+			</div>
+			
+			<% } %>
+			
+		
             <h5 class="my-4"> LOGİN </h5>
 	
 			<%
-			String pasCookie= null,userCookie=null;
+			String pasCookie= null;
+			String userCookie=null;
 				if(request.getCookies() != null) {
 					Cookie[] cookies = request.getCookies();
 					

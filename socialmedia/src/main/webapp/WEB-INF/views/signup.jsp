@@ -1,3 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+    <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+    
+    <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>  
 <!doctype html>
 <html lang="en">
 
@@ -13,35 +19,57 @@
         integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <link rel="stylesheet" href="css/signup.css" />
+
     <title> Sign Up </title>
 </head>
 
 <body>
 
     <div class="container-fluid">
+    
+    
+    
         <div id="sign-container" class="text-center">
+        
+        	<% 
+    		if(request.getParameter("serr") != null && request.getParameter("serr").equalsIgnoreCase("1")) {
+    			
+    		
+    	%>
+    	<div class="alert alert-warning alert-dismissible fade show mt-4" role="alert">
+		
+			<strong> Something went wrong!  </strong>
+		
+		  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		    <span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+    	
+    	
+    	<% } %>
 
             <h5> SİGN UP </h5>
 
-            <form method="POST" action="signUpPost" enctype="multipart/form-data">
+            <form:form method="POST" action="signUpPost" enctype="multipart/form-data" modelAttribute="user">
 
                 <div class="form-group mt-3">
-                    <input type="text" class="mx-auto mt-4 d-block" required="required" placeholder="username*"
+                    <form:input type="text" path="username" class="mx-auto mt-4 d-block" cssStyle=" text-transform: capitalize;" required="required" placeholder="username*"
                         title="Your username" />
-                    <input type="email" class="mx-auto mt-4 d-block" required="required"
+                    <form:input path="useremail" type="email" cssClass="mx-auto mt-4 d-block" required="required"
                         placeholder="example@gmail.com*" title="gmail hesabınız" />
 
-                    <input type="password" required="required" class="mx-auto mt-4 d-block"
+                    <form:password path="user_password"  required="required" class="mx-auto mt-4 d-block"
                         placeholder="Your Password*" />
 
                 </div>
 
                 <div class="form-group mt-3">
 
-                    <input type="date" required="required" class="mx-auto d-block mt-4" />
+                    <input name="userbof" type="date" required="required" class="mx-auto d-block mt-4" />
                     <label for="photo" class="mt-4">
                         Profile Photo
-                        <input type="file" class="mx-auto  d-block" placeholder="Profile Photo"
+                        <input type="file" name="profilephoto" class="mx-auto  d-block" placeholder="Profile Photo"
                             accept="image/png, image/gif, image/jpeg" id="photo" />
                     </label>
                 </div>
@@ -50,7 +78,7 @@
                     <button type="submit"> <i class="fas fa-user-plus fa-1x mr-1"></i> Sign Up </button>
                 </div>
 
-            </form>
+            </form:form>
 
         </div>
 
