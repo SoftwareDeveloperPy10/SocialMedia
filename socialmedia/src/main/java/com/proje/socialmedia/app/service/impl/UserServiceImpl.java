@@ -68,6 +68,12 @@ public class UserServiceImpl implements UserService{
 		// TODO Auto-generated method stub
 		return userAltDAO.checkUser(email, password);
 	}
+
+	@Override
+	public User getUserByEmail(String email) {
+		// TODO Auto-generated method stub
+		return userAltDAO.getUserByEmail(email);
+	}
 	
 	
 	

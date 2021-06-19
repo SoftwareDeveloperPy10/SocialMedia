@@ -5,6 +5,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.UUID;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -23,6 +24,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.proje.socialmedia.app.model.User;
 import com.proje.socialmedia.app.service.UserService;
+import com.proje.socialmedia.app.utils.EmailSender;
+import com.proje.socialmedia.app.utils.EmailSenderImpl;
 
 @Controller
 public class IndexController {
@@ -74,18 +77,37 @@ public class IndexController {
 					
 					md = MessageDigest.getInstance("MD5");
 					
-					byte[] dizi= md.digest(theUser.getUser_password().getBytes());
-					
-				
-					
-					BigInteger encryptedPassword = new BigInteger(1, dizi);
-					
-					String hashPassword = encryptedPassword.toString();
 					
 					
-					Cookie pasCookie = new Cookie("password",hashPassword);
+					for(Cookie c: request.getCookies()) {
+						
+						if(c.getName().equalsIgnoreCase("password") ) {
+							
+							
+							
+							
 					
-					response.addCookie(pasCookie);
+						
+							
+							Cookie pasCookie = new Cookie("password",theUser.getUser_password());
+						}else {
+							byte[] dizi= md.digest(theUser.getUser_password().getBytes());
+							
+							
+							
+							BigInteger encryptedPassword = new BigInteger(1, dizi);
+							
+							String hashPassword = encryptedPassword.toString();
+							Cookie pasCookie = new Cookie("password",hashPassword);
+							pasCookie.setPath("/");
+							response.addCookie(pasCookie);
+							
+						}
+						
+					}
+					
+					cookie.setPath("/");
+					
 					
 					}catch(Exception e) {
 						e.printStackTrace();
@@ -200,5 +222,57 @@ public class IndexController {
 		return "redirect:/signUp?serr=1";
 		
 	}
+	
+	
+	@GetMapping("/forgotPassword")
+	public String forgotPassword() {
+		return "forgotPassword";
+	}
+	
+	
+	@PostMapping("/changePassword")
+	public String changePassword(@RequestParam(name="email",required = true) String email, HttpServletRequest request ) {
+		
+		String uniqeid = UUID.randomUUID().toString();
+		
+		HttpSession session = request.getSession(true);
+		
+		session.setAttribute("lockemail", uniqeid);
+		
+		session.setMaxInactiveInterval(86400);
+		
+		
+		
+		
+		if(email != null) {
+		
+		try {
+			
+			EmailSender emailSender = new EmailSenderImpl();
+			
+			emailSender.sendEmailToOnePerson(email, "Sifre Yenileme",
+					"Sifre yenileme linkiniz: <a href='http://localhost:8080/user/yenile?email="+email +"&id="+ uniqeid  +"'> buraya </a> tıklayınız");
+			
+			System.out.println("Mail gitti");
+			
+			return "redirect:/forgotPassword?succ=1";
+			
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage());
 
+			return "redirect:/forgotPassword?err=1";
+		}
+		
+		}
+		
+		return "redirect:/forgotPassword?err=1";
+		
+		
+	}
+	
+	
+	
 }

@@ -20,4 +20,7 @@ public interface UserService {
 	
 	User checkUser(String email,String password);
 	
+	
+	User getUserByEmail(String email);
+	
 }

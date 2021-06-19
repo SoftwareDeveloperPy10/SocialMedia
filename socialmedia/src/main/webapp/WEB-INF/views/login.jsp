@@ -81,7 +81,9 @@
 					
 				for(Cookie c: cookies) {
 					
-				
+					out.print(c.getName()+" ---> "+c.getValue());
+					out.print("<br /> ");
+					
 					if(c.getName().equals("password")) {
 						 pasCookie=c.getValue();
 					}
@@ -128,7 +130,7 @@
 
                     <div class="d-flex justify-content-around">
 
-                        <a href="/sifreUnuttum" class="link"> Forgot Password? </a>
+                        <a href="/forgotPassword" class="link"> Forgot Password? </a>
                         <label for="rememberMe">Remember Me
                             <label class="switch">
 

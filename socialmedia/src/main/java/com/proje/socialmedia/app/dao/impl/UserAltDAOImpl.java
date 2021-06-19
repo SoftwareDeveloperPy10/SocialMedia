@@ -56,6 +56,32 @@ public class UserAltDAOImpl implements UserAltDAO{
 		
 		return user;
 	}
+
+	@Override
+	public User getUserByEmail(String email) {
+		// TODO Auto-generated method stub
+		
+		Session session = sessionFactory.openSession();
+		
+		try {
+			
+			TypedQuery<User> query = session.createQuery("select k from kullanici k where k.useremail = :email");
+			
+			query.setParameter("email", email);
+			
+			User user = query.getSingleResult();
+			
+			session.close();
+			return user;
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage());
+			return null;
+		}
+		
+
+	}
 	
 	
 	

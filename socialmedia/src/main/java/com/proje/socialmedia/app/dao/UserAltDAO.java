@@ -9,5 +9,7 @@ public interface UserAltDAO {
 	
 	User checkUser(String email,String password);
 	
+	User getUserByEmail(String email);
+	
 	
 }
