@@ -1,0 +1,44 @@
+@import "../abstract/variables";
+@import "../base/typography";
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    background-color: $primary-color;
+
+    border-radius: 0.3rem;
+
+    padding: 0.3rem;
+
+    text-align: center;
+
+    font-family: $primary-font;
+    outline: none;
+    transition: all 1s;
+
+    &:hover {
+        transition: all 1s;
+        outline: none;
+
+        background: $secondary-color;
+    }
+}
+
+button[type="submit"] {
+    background: $secondary-color;
+
+    font-family: $secondary-font;
+    padding: 0.4rem;
+
+    border-radius: 0.5rem;
+
+    outline: none;
+
+    transition: all 1s;
+
+    &:hover {
+        transition: all 1s;
+        background: $primary-color;
+        cursor: pointer;
+    }
+}

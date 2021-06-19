@@ -1,0 +1,128 @@
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Noto+Sans+TC:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Noto+Sans+TC:wght@500&display=swap");
+input[type=text],
+input[type=email],
+input[type=password] {
+  background-color: #66de93;
+  border-radius: 0.3rem;
+  padding: 0.3rem;
+  text-align: center;
+  font-family: "Noto Sans TC", sans-serif;
+  outline: none;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+input[type=text]:hover,
+input[type=email]:hover,
+input[type=password]:hover {
+  -webkit-transition: all 1s;
+  transition: all 1s;
+  outline: none;
+  background: #cfdac8;
+}
+
+button[type=submit] {
+  background: #cfdac8;
+  font-family: "Nanum Gothic", sans-serif;
+  padding: 0.4rem;
+  border-radius: 0.5rem;
+  outline: none;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+button[type=submit]:hover {
+  -webkit-transition: all 1s;
+  transition: all 1s;
+  background: #66de93;
+  cursor: pointer;
+}
+
+body {
+  background-color: #66de93;
+}
+
+:root {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+#login-container {
+  border: 0.5rem solid #cfdac8;
+  border-radius: 1rem;
+  margin-top: 10%;
+  min-width: 60vw;
+  background: #cfdac8;
+  max-width: 60vw;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+#login-container p,
+#login-container a {
+  font-family: "Nanum Gothic", sans-serif;
+}
+#login-container a {
+  -webkit-transition: all 1s;
+  transition: all 1s;
+  letter-spacing: 1px;
+  cursor: pointer;
+  color: white;
+  text-decoration: underline;
+}
+#login-container a:hover {
+  color: black;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+#login-container .switch {
+  position: relative;
+  display: inline-block;
+  width: 45px;
+  height: 24px;
+  /* Rounded sliders */
+}
+#login-container .switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+#login-container .switch .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+#login-container .switch .slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 20px;
+  left: 1px;
+  bottom: 1px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+#login-container .switch input:checked + .slider {
+  background-color: #2196f3;
+}
+#login-container .switch input:focus + .slider {
+  -webkit-box-shadow: 0 0 1px #2196f3;
+          box-shadow: 0 0 1px #2196f3;
+}
+#login-container .switch input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  transform: translateX(24px);
+}
+#login-container .switch .slider.round {
+  border-radius: 34px;
+}
+#login-container .switch .slider.round:before {
+  border-radius: 50%;
+}
