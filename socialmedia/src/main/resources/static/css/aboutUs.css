@@ -1,0 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Noto+Sans+TC:wght@500&display=swap");
+body {
+  background-color: #66de93;
+}
+body h3 {
+  color: #cfdac8;
+  font-family: "Noto Sans TC", sans-serif;
+}
+body p {
+  font-family: "Nanum Gothic", sans-serif;
+}
+
+.card {
+  background-color: #cfdac8;
+  border: none;
+  min-height: 27rem;
+  max-height: 27rem;
+}
+.card img {
+  margin: auto;
+  min-width: 15vw;
+  max-width: 10vw;
+  margin-top: 1rem;
+}
+.card h5 {
+  font-family: "Noto Sans TC", sans-serif;
+  color: #66de93;
+}
+.card p {
+  font-family: "Nanum Gothic", sans-serif;
+}

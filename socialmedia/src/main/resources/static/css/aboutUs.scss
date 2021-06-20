@@ -1,0 +1,36 @@
+@import "./abstract/variables";
+@import "./base/typography";
+
+body {
+    background-color: $primary-color;
+
+    & h3 {
+        color: $secondary-color;
+        font-family: $primary-font;
+    }
+    & p {
+        font-family: $secondary-font;
+    }
+}
+
+.card {
+    background-color: $secondary-color;
+    border: none;
+    min-height: 27rem;
+    max-height: 27rem;
+    & img {
+        margin: auto;
+        min-width: 15vw;
+        max-width: 10vw;
+        margin-top: 1rem;
+    }
+
+    & h5 {
+        font-family: $primary-font;
+        color: $primary-color;
+    }
+
+    & p {
+        font-family: $secondary-font;
+    }
+}

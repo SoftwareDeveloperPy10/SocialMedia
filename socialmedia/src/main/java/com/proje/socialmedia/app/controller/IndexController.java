@@ -33,6 +33,12 @@ public class IndexController {
 	@Autowired
 	private UserService userService;
 	
+	
+	@GetMapping("/aboutUs")
+	public String aboutUs() {
+		return "aboutUs";
+	}
+	
 	@GetMapping("/login")
 	public String login(Model theModel) {
 		
