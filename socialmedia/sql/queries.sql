@@ -81,6 +81,14 @@ create table begeni(
 insert into kullanici(username,useremail,user_password,user_bof)
 values('Mirac Yüksel','miracpy10@gmail.com','12345','1999-6-10')
 
+
+
 select * from kullanici
 
 select * from story
+
+
+select * from post
+
+
+

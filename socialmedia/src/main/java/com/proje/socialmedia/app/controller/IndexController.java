@@ -2,9 +2,8 @@ package com.proje.socialmedia.app.controller;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.Cookie;
@@ -22,7 +21,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.proje.socialmedia.app.model.Post;
 import com.proje.socialmedia.app.model.User;
+import com.proje.socialmedia.app.service.PostService;
 import com.proje.socialmedia.app.service.UserService;
 import com.proje.socialmedia.app.utils.EmailSender;
 import com.proje.socialmedia.app.utils.EmailSenderImpl;
@@ -32,6 +33,19 @@ public class IndexController {
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private PostService postService;
+	
+	@GetMapping("/profile")
+	public String profile(Model theModel)  {
+		
+		List<Post> postList = postService.getPostList();
+		
+		theModel.addAttribute("postList",postList);
+		
+		return "profile";
+	}
 	
 	
 	@GetMapping("/aboutUs")

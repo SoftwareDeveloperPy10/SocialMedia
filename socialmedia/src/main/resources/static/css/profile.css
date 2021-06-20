@@ -1,0 +1,126 @@
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Noto+Sans+TC:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Noto+Sans+TC:wght@500&display=swap");
+input[type=text],
+input[type=email],
+input[type=password],
+input[type=date],
+input[type=file],
+input[type=search] {
+  background-color: #66de93;
+  border-radius: 0.3rem;
+  padding: 0.3rem;
+  text-align: center;
+  font-family: "Noto Sans TC", sans-serif;
+  outline: none;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+input[type=text]:hover,
+input[type=email]:hover,
+input[type=password]:hover,
+input[type=date]:hover,
+input[type=file]:hover,
+input[type=search]:hover {
+  -webkit-transition: all 1s;
+  transition: all 1s;
+  outline: none;
+  background: #cfdac8;
+}
+
+button[type=submit] {
+  background: #cfdac8;
+  font-family: "Nanum Gothic", sans-serif;
+  padding: 0.4rem;
+  border-radius: 0.5rem;
+  outline: none;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+button[type=submit]:hover {
+  -webkit-transition: all 1s;
+  transition: all 1s;
+  background: #66de93;
+  cursor: pointer;
+}
+
+body {
+  background-color: #cfdac8;
+}
+body h4 {
+  font-family: "Noto Sans TC", sans-serif;
+  color: #66de93;
+}
+
+#accordion .profile-list {
+  list-style-type: none;
+  background-color: #66de93;
+  width: 85%;
+  border-radius: 1rem;
+  margin: auto;
+  text-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+#accordion .profile-list li {
+  margin: auto;
+}
+#accordion .profile-list button {
+  text-decoration: none;
+  text-align: center;
+  font-family: "Nanum Gothic", sans-serif;
+  color: black;
+}
+
+#content-edit,
+#content-posts,
+#content-post-update,
+#content-post-delete {
+  margin: auto;
+  border: 4px solid #66de93;
+  border-radius: 1rem;
+  margin-top: 20%;
+  width: 70%;
+}
+
+#content-post-update table img,
+#content-post-delete table img {
+  min-width: 10vw !important;
+  max-width: 10vw !important;
+  min-height: 10vh !important;
+  max-height: 10vh !important;
+}
+#content-post-update .table-container,
+#content-post-delete .table-container {
+  max-height: 60vh !important;
+}
+#content-post-update table button,
+#content-post-delete table button {
+  background-color: #66de93;
+  padding: 0.3rem;
+  margin: auto !important;
+  border-radius: 0.6rem;
+  font-family: "Noto Sans TC", sans-serif;
+  cursor: pointer;
+}
+#content-post-update table button:focus,
+#content-post-delete table button:focus {
+  outline: none;
+}
+#content-post-update .modal-body img,
+#content-post-delete .modal-body img {
+  min-width: 30vw !important;
+  max-width: 30vw !important;
+  min-height: 30vh !important;
+  max-height: 30vh !important;
+}
+
+#content-posts select {
+  background-color: #66de93;
+  padding: 0.3rem;
+  border-radius: 0.4rem;
+}
+#content-posts select option {
+  color: black;
+  font-family: "Nanum Gothic", sans-serif;
+}

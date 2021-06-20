@@ -10,12 +10,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.proje.socialmedia.app.model.User;
+import com.proje.socialmedia.app.service.FileUploadService;
 import com.proje.socialmedia.app.service.UserService;
 
 @Controller
@@ -24,6 +27,116 @@ public class UserController {
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private FileUploadService fileUploadService;
+	
+	
+	@PostMapping("/changePhoto")
+	public String changePhoto( @RequestParam(name="photo",required = true) MultipartFile file) {
+		
+		if(file != null) {
+			
+			String fileUrl = StringUtils.cleanPath(file.getOriginalFilename());
+			
+			User updatedUser = userService.getUserById(18);
+			
+			updatedUser.setUser_photo(fileUrl);
+			
+			if(userService.updateUser(updatedUser)) {
+				
+				try {
+					fileUploadService.uploadFile(file);
+					return "redirect:/profile?succ=1";
+				} catch (Exception e) {
+					// TODO: handle exception
+					System.out.println(e.getMessage());
+
+					return "redirect:/profile?err=1";
+				}
+				
+				
+				
+				
+			}
+			
+			
+		}
+		
+		return "redirect:/profile?err=1";
+	}
+	
+	
+	@PostMapping("/passChange")
+	public String passChange(@RequestParam(name="password",required = true) String password,HttpServletRequest request) {
+			
+		
+		if(password != null) {
+			
+			User updatedUser = userService.getUserById(18);
+			
+			try {
+				MessageDigest md= MessageDigest.getInstance("MD-5");
+				byte[] dizi = md.digest(password.getBytes());
+				BigInteger encryptedPassword = new BigInteger(1,dizi);
+				
+				String hashPassword = encryptedPassword.toString();
+				
+				updatedUser.setUser_password(hashPassword);
+				
+				if(userService.updateUser(updatedUser))
+					return "redirect:/profile?succ=1";
+				
+				
+				
+			} catch (NoSuchAlgorithmException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return "redirect:/profile?err=1";
+				
+			}
+			
+			return "redirect:/profile?err=1";
+			
+			
+			
+		}
+		
+		
+		
+		
+		return null;
+	}
+	
+	@PostMapping("/changeUsername")
+	public String changeUsername(@RequestParam(name="username",required = true) String username,HttpServletRequest request) {
+		
+		if(username != null) {
+			
+			
+			
+			//User updatedUser = userService.getUserById(Integer.parseInt(request.getSession().getAttribute("kullaniciid").toString()));
+			User updatedUser = userService.getUserById(18);
+			
+			
+			
+			updatedUser.setUsername(username);
+			
+			
+			if(userService.updateUser(updatedUser)) 
+				return "redirect:/profile?succ=1";
+			
+			
+			
+		}
+		
+		
+		return "redirect:/profile?err=1";
+		
+		
+	}
+	
+	
 	
 	@GetMapping("/changePassword")
 	public String changePassword(@RequestParam(name="succ",required = false) String succ,
