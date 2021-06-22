@@ -7,18 +7,23 @@ import java.security.NoSuchAlgorithmException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.proje.socialmedia.app.model.Subscribe;
 import com.proje.socialmedia.app.model.User;
 import com.proje.socialmedia.app.service.FileUploadService;
+import com.proje.socialmedia.app.service.SubscribeService;
 import com.proje.socialmedia.app.service.UserService;
 
 @Controller
@@ -30,6 +35,81 @@ public class UserController {
 	
 	@Autowired
 	private FileUploadService fileUploadService;
+	
+	@Autowired
+	private SubscribeService subService;
+	
+	@PostMapping("/doSubscribe")
+	public void doSubscribe(@RequestBody String body) {
+		
+		if(body != null) {
+			
+			String[] params = body.split("&");
+			
+			String value1= params[0].split("=")[1]; // scribeid
+			String value2= params[1].split("=")[1]; //accountid
+			
+			
+			if(value1 != null && value2 != null) {
+				Subscribe sub = new Subscribe();
+				
+				User scribe = userService.getUserById(Integer.parseInt(value1));
+				
+				User account = userService.getUserById(Integer.parseInt(value2));
+				
+				sub.setSubscriber(scribe);
+				sub.setSubaccount(account);
+				
+				subService.saveSubscribe(sub);
+						
+			}
+			
+		}
+		
+		
+	}
+	
+	
+	
+	@GetMapping("/userProfile")
+	public String detail(@RequestParam(name="id",required = true) String id, 
+			Model theModel,HttpServletRequest request) {
+		
+		if(id != null) {
+			
+			Integer newId = Integer.parseInt(id);
+			try {
+				User detailedUser= userService.getUserById(newId);
+				
+				if(detailedUser != null) {
+				
+					theModel.addAttribute("userDetail",detailedUser);
+					int count = subService.getSubcount(newId);
+					theModel.addAttribute("subAccount",count);
+					
+					
+					
+					
+					
+					boolean result = subService.checkSubscribe(newId, 11);
+				
+					theModel.addAttribute("result",result);
+					
+					
+					
+				}
+				return "userProfile";
+			} catch (Exception e) {
+				// TODO: handle exception
+				System.out.println(e.getMessage());
+				return null;
+			}
+			
+		}
+		
+		
+		return null;
+	}
 	
 	
 	@PostMapping("/changePhoto")

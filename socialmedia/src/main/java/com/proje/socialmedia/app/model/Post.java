@@ -9,6 +9,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -36,6 +38,9 @@ public class Post {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date postdate;
 	
+	@ManyToOne
+	@JoinColumn(name="kullaniciid")
+	private User user;
 	
 	public Post() {
 	}
@@ -43,6 +48,20 @@ public class Post {
 	
 	
 	
+	public User getUser() {
+		return user;
+	}
+
+
+
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+
+
+
 	public Date getPostdate() {
 		return postdate;
 	}

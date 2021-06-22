@@ -78,6 +78,19 @@ create table begeni(
 );	
 
 
+create table subscriber(
+	subscriberid Serial,
+	subscriber int,
+	subaccount int,
+	Primary Key(subscriberid),
+	Foreign Key(subscriber) references kullanici(kullaniciid),
+	Foreign Key(subaccount) references kullanici(kullaniciid)
+);
+
+select * from subscriber
+insert into subscriber(subscriber,subaccount)
+values(18,11);
+
 insert into kullanici(username,useremail,user_password,user_bof)
 values('Mirac Yüksel','miracpy10@gmail.com','12345','1999-6-10')
 
@@ -92,3 +105,12 @@ select * from post
 
 
 
+delete from post
+
+alter table post add column kullaniciid int
+
+alter table post add constraint fk_kullaniciid
+Foreign Key(kullaniciid) references kullanici(kullaniciid);
+
+insert into post(posttype,post_content,post_url,postdate,kullaniciid)
+values('IMAGE','Linux wow!','linux.jpg',current_date,18);

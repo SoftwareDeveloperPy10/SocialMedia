@@ -1,12 +1,14 @@
 package com.proje.socialmedia.app.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -33,10 +35,31 @@ public class User {
 	
 	@Temporal(TemporalType.DATE)
 	private Date user_bof;
+	
+	@OneToMany(mappedBy = "subscriber")
+	private List<Subscribe> subscribeList;
 
+	
+	@OneToMany(mappedBy = "user")
+	private List<Post> postList;
+	
 	public User() {
 	
 	}
+	
+	
+
+	public List<Post> getPostList() {
+		return postList;
+	}
+
+
+
+	public void setPostList(List<Post> postList) {
+		this.postList = postList;
+	}
+
+
 
 	public int getKullaniciid() {
 		return kullaniciid;
@@ -86,6 +109,14 @@ public class User {
 
 	public void setUser_bof(Date user_bof) {
 		this.user_bof = user_bof;
+	}
+
+	public List<Subscribe> getSubscribeList() {
+		return subscribeList;
+	}
+
+	public void setSubscribeList(List<Subscribe> subscribeList) {
+		this.subscribeList = subscribeList;
 	}
 	
 	
