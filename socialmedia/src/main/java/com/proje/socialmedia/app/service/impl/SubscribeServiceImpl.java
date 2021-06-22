@@ -69,6 +69,13 @@ public class SubscribeServiceImpl implements SubscribeService{
 		// TODO Auto-generated method stub
 		return altDAO.checkSubscribe(subAccountId, subScribeId);
 	}
+
+	@Override
+	public List<Subscribe> getSubList(int subAccountId) {
+		// TODO Auto-generated method stub
+
+		return altDAO.getSubList(subAccountId);
+	}
 	
 	
 	

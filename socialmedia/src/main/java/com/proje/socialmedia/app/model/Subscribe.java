@@ -20,11 +20,11 @@ public class Subscribe {
 	
 	@ManyToOne
 	@JoinColumn(name="subscriber")
-	private User subscriber;
+	private User subscriber; // kendisini takip eden
 	
 	@OneToOne
 	@JoinColumn(name="subaccount")
-	private User subaccount;
+	private User subaccount; //takip edilen hesap
 
 	public Subscribe() {
 	}

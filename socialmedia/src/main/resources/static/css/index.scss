@@ -1,0 +1,138 @@
+@import "./component/inputs";
+@import "./base/typography";
+@import "./abstract/variables";
+
+body {
+    background-color: $primary-color;
+}
+
+#navbar {
+    background-color: $secondary-color;
+
+    & .navbar-toggler {
+        background-color: $primary-color !important;
+        & .navbar-toggler-icon {
+            background-color: $secondary-color;
+        }
+    }
+
+    & a {
+        color: black;
+
+        font-family: $secondary-font;
+        transition: all 0.3s;
+        &:hover {
+            transition: all 0.3s;
+            border-bottom: 3px solid black;
+        }
+    }
+}
+
+footer {
+    background-color: $secondary-color;
+
+    border-top: 3px solid black;
+
+    & h5 {
+        font-family: $primary-font;
+        color: $primary-color;
+
+        margin-top: 3rem;
+        text-decoration: underline;
+    }
+
+    & ul {
+        background-color: $primary-color;
+        border: 3px solid $primary-color;
+        border-radius: 1rem;
+        padding: 0.3rem;
+
+        & li {
+            list-style-type: none;
+
+            & a {
+                color: black;
+                &:hover {
+                    color: white;
+                }
+            }
+        }
+    }
+
+    & img {
+        max-width: 15vw;
+        min-width: 15vw;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        max-height: 24vh;
+        min-height: 24vh;
+        border-radius: 1rem;
+    }
+}
+
+#stories {
+    background-color: white;
+    max-height: 35vh !important;
+    margin-top: 3rem;
+
+    margin-bottom: 1rem;
+
+    & .story-item {
+        margin-top: 1rem;
+        & .card {
+            background-color: $primary-color !important;
+
+            & span {
+                font-family: $secondary-font;
+                color: $secondary-color;
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+#post-contents {
+    & .card {
+        background-color: $secondary-color;
+
+        & .card-body {
+            & img {
+                max-width: 60vw !important;
+                max-height: 50vh !important;
+                border-radius: 1rem;
+            }
+        }
+
+        & p {
+            margin-top: 2rem;
+            font-family: $secondary-font;
+        }
+    }
+
+    & .card-header {
+        & img {
+            max-width: 5vw !important;
+            min-width: 5vw !important;
+            max-height: 8vh;
+            border-radius: 40%;
+        }
+
+        & span {
+            font-family: $primary-font;
+            color: $primary-color;
+            text-transform: capitalize;
+            margin-top: 0.7rem;
+        }
+    }
+
+    & span button {
+        border-radius: 0.3rem;
+        background-color: $primary-color;
+    }
+}
+
+#pagination {
+    & nav {
+        margin-left: 44%;
+    }
+}

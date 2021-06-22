@@ -103,7 +103,15 @@ select * from story
 
 select * from post
 
+insert into post(posttype,post_content,post_url,postdate,kullaniciid)
+values('IMAGE','cODİNG Post','codingpost.jpg',CURRENT_DATE,11);
 
+insert into post(posttype,post_content,post_url,postdate,kullaniciid)
+values('IMAGE','Coffee','kahve.jpg',CURRENT_DATE,11);
+ 
+delete from subscriber where subscriberid=4;
+
+select * from subscriber
 
 delete from post
 

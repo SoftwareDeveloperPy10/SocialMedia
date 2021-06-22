@@ -2,6 +2,9 @@ package com.proje.socialmedia.app.controller;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -22,8 +25,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.proje.socialmedia.app.model.Post;
+import com.proje.socialmedia.app.model.Subscribe;
 import com.proje.socialmedia.app.model.User;
 import com.proje.socialmedia.app.service.PostService;
+import com.proje.socialmedia.app.service.SubscribeService;
 import com.proje.socialmedia.app.service.UserService;
 import com.proje.socialmedia.app.utils.EmailSender;
 import com.proje.socialmedia.app.utils.EmailSenderImpl;
@@ -36,6 +41,56 @@ public class IndexController {
 	
 	@Autowired
 	private PostService postService;
+	
+	@Autowired
+	private SubscribeService subService;
+	
+	@GetMapping("/")
+	public String index(Model theModel,HttpServletRequest request) {
+		
+		HttpSession session = request.getSession(true);
+		
+		session.setAttribute("kullaniciid", 18);
+		
+		session.setMaxInactiveInterval(86400);
+		
+		List<Post> postList = new ArrayList<Post>();
+		try {
+			
+		if(subService.getSubList(Integer.parseInt(request.getSession().getAttribute("kullaniciid").toString())) != null ) {
+			List<Subscribe> subList = subService.getSubList(Integer.parseInt(request.getSession().getAttribute("kullaniciid").toString()));
+			for(Subscribe s: subList) {
+				System.out.println(s.getSubaccount().getKullaniciid());
+				
+				for (Post post : s.getSubaccount().getPostList()) {
+					
+					postList.add(post);
+					
+				}
+				
+			}
+			
+			
+			
+		
+			
+			Collections.shuffle(postList);
+			theModel.addAttribute("postList",postList);
+			
+		} 
+		
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage());
+		}
+		
+		
+		
+		
+		return "index";
+	}
+	
+	
 	
 	@GetMapping("/profile")
 	public String profile(Model theModel)  {

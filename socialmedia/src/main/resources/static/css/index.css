@@ -1,0 +1,155 @@
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Noto+Sans+TC:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Noto+Sans+TC:wght@500&display=swap");
+input[type=text],
+input[type=email],
+input[type=password],
+input[type=date],
+input[type=file],
+input[type=search] {
+  background-color: #66de93;
+  border-radius: 0.3rem;
+  padding: 0.3rem;
+  text-align: center;
+  font-family: "Noto Sans TC", sans-serif;
+  outline: none;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+input[type=text]:hover,
+input[type=email]:hover,
+input[type=password]:hover,
+input[type=date]:hover,
+input[type=file]:hover,
+input[type=search]:hover {
+  -webkit-transition: all 1s;
+  transition: all 1s;
+  outline: none;
+  background: #cfdac8;
+}
+
+button[type=submit] {
+  background: #cfdac8;
+  font-family: "Nanum Gothic", sans-serif;
+  padding: 0.4rem;
+  border-radius: 0.5rem;
+  outline: none;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+button[type=submit]:hover {
+  -webkit-transition: all 1s;
+  transition: all 1s;
+  background: #66de93;
+  cursor: pointer;
+}
+
+body {
+  background-color: #66de93;
+}
+
+#navbar {
+  background-color: #cfdac8;
+}
+#navbar .navbar-toggler {
+  background-color: #66de93 !important;
+}
+#navbar .navbar-toggler .navbar-toggler-icon {
+  background-color: #cfdac8;
+}
+#navbar a {
+  color: black;
+  font-family: "Nanum Gothic", sans-serif;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+#navbar a:hover {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  border-bottom: 3px solid black;
+}
+
+footer {
+  background-color: #cfdac8;
+  border-top: 3px solid black;
+}
+footer h5 {
+  font-family: "Noto Sans TC", sans-serif;
+  color: #66de93;
+  margin-top: 3rem;
+  text-decoration: underline;
+}
+footer ul {
+  background-color: #66de93;
+  border: 3px solid #66de93;
+  border-radius: 1rem;
+  padding: 0.3rem;
+}
+footer ul li {
+  list-style-type: none;
+}
+footer ul li a {
+  color: black;
+}
+footer ul li a:hover {
+  color: white;
+}
+footer img {
+  max-width: 15vw;
+  min-width: 15vw;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  max-height: 24vh;
+  min-height: 24vh;
+  border-radius: 1rem;
+}
+
+#stories {
+  background-color: white;
+  max-height: 35vh !important;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+}
+#stories .story-item {
+  margin-top: 1rem;
+}
+#stories .story-item .card {
+  background-color: #66de93 !important;
+}
+#stories .story-item .card span {
+  font-family: "Nanum Gothic", sans-serif;
+  color: #cfdac8;
+  font-weight: bold;
+}
+
+#post-contents .card {
+  background-color: #cfdac8;
+}
+#post-contents .card .card-body img {
+  max-width: 60vw !important;
+  max-height: 50vh !important;
+  border-radius: 1rem;
+}
+#post-contents .card p {
+  margin-top: 2rem;
+  font-family: "Nanum Gothic", sans-serif;
+}
+#post-contents .card-header img {
+  max-width: 5vw !important;
+  min-width: 5vw !important;
+  max-height: 8vh;
+  border-radius: 40%;
+}
+#post-contents .card-header span {
+  font-family: "Noto Sans TC", sans-serif;
+  color: #66de93;
+  text-transform: capitalize;
+  margin-top: 0.7rem;
+}
+#post-contents span button {
+  border-radius: 0.3rem;
+  background-color: #66de93;
+}
+
+#pagination nav {
+  margin-left: 44%;
+}

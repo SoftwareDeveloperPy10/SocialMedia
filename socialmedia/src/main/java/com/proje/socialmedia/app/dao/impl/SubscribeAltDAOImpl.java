@@ -13,6 +13,8 @@ import com.proje.socialmedia.app.dao.SubscribeDAOAlt;
 import com.proje.socialmedia.app.model.Subscribe;
 
 
+
+
 @Component
 public class SubscribeAltDAOImpl implements SubscribeDAOAlt{
 	
@@ -69,6 +71,39 @@ public class SubscribeAltDAOImpl implements SubscribeDAOAlt{
 
 		
 		
+	}
+
+	@Override
+	public List<Subscribe> getSubList(int subAccountId) {
+		// TODO Auto-generated method stub
+		
+		
+		
+		List<Subscribe> subList= null;
+		
+		
+		try {
+			Session session = sessionFactory.openSession();
+			TypedQuery<Subscribe> query = session.createQuery("select s from Subscribe s where s.subscriber.kullaniciid= :subId");
+			
+			query.setParameter("subId", subAccountId);
+			
+			subList = query.getResultList();
+			
+		
+			
+			session.close();
+			
+			return subList;
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage());
+			
+			return subList;
+		}
+		
+		
+	
 	}
 	
 	

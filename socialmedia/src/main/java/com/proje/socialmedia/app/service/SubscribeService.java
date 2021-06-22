@@ -22,5 +22,7 @@ public interface SubscribeService {
 	
 	boolean checkSubscribe(int subAccountId,int subScribeId);
 	
+	List<Subscribe> getSubList(int subAccountId);
+	
 	
 }
