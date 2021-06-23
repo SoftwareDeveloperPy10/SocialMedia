@@ -1,0 +1,20 @@
+@import "../base/typography";
+@import "../abstract/variables";
+@import "../component/inputs";
+
+body {
+    background-color: $primary-color;
+}
+
+#login-container {
+    margin: auto !important;
+    margin-top: 10% !important;
+
+    & input {
+        margin-top: 3rem;
+    }
+
+    & button {
+        margin-top: 3rem;
+    }
+}

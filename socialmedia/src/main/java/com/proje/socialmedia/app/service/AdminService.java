@@ -19,4 +19,6 @@ public interface AdminService {
 	Admin getAdminById(int adminId);
 	
 	
+	boolean checkAdmin(String email,String password);
+	
 }

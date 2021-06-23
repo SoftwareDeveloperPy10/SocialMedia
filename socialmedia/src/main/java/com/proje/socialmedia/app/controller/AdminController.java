@@ -61,6 +61,49 @@ public class AdminController {
 	}
 	
 	
+	@GetMapping("/login")
+	public String login() {
+		return "admin/login";
+	}
+	
+	@PostMapping("/loginPost")
+	public String loginPost(@RequestParam(name="email",required = true) String email, @RequestParam(name="password",required = true) String password ) {
+		
+		
+		if(email != null && password != null) {
+			
+			
+			try {
+				MessageDigest md = MessageDigest.getInstance("MD5");
+				
+				byte[] array= md.digest(password.getBytes());
+				
+				BigInteger pass = new BigInteger(1,array);
+				
+				String hashPassword = pass.toString();
+				
+				if(adminService.checkAdmin(email, hashPassword))
+				{
+					return "redirect:/admin/index";
+				}else {
+					return "redirect:/admin/login?err=1";
+				}
+				
+			} catch (Exception e) {
+				// TODO: handle exception
+				return "redirect:/admin/login?err=1";
+			}
+			
+			
+			
+			
+		}
+		return "redirect:/admin/login?err=1";
+		
+		
+	}
+	
+	
 	@GetMapping("/allAccounts")
 	public String allAccounts(Model theModel) {
 		

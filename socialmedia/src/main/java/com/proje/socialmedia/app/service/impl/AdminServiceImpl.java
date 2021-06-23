@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.proje.socialmedia.app.dao.AdminAltDAO;
 import com.proje.socialmedia.app.dao.AdminDAO;
 import com.proje.socialmedia.app.model.Admin;
 import com.proje.socialmedia.app.service.AdminService;
@@ -14,6 +15,9 @@ public class AdminServiceImpl implements AdminService{
 	
 	@Autowired
 	private AdminDAO adminDAO;
+	
+	@Autowired
+	private AdminAltDAO altDAO;
 
 	@Override
 	public boolean saveAdmin(Admin admin) {
@@ -52,6 +56,12 @@ public class AdminServiceImpl implements AdminService{
 	public Admin getAdminById(int adminId) {
 		// TODO Auto-generated method stub
 		return adminDAO.findById(adminId).get();
+	}
+
+	@Override
+	public boolean checkAdmin(String email, String password) {
+		// TODO Auto-generated method stub
+		return altDAO.checkAdmin(email, password);
 	}
 	
 	

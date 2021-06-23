@@ -87,6 +87,22 @@ create table subscriber(
 	Foreign Key(subaccount) references kullanici(kullaniciid)
 );
 
+
+create table header(
+	headerid Serial,
+	brand character varying(255) not null,
+	primary key(headerid)
+);
+
+
+create table footer(
+	id Serial,
+	facebook character varying(150),
+	gismap character varying(150),
+	primary key(id)
+);
+
+select * from footer
 select * from subscriber
 insert into subscriber(subscriber,subaccount)
 values(19,20);
@@ -148,5 +164,11 @@ select * from kullanici;
 
 insert into kullanici(username,useremail,user_password,user_photo,user_bof)
 values('jeff bezos','miracpy10@gmail.com','12345','bezos.jpg','2000-6-21');
+
+
+select * from header
+
+select * from footer
+
 
 
