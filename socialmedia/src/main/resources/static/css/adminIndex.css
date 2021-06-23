@@ -1,0 +1,115 @@
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Noto+Sans+TC:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Noto+Sans+TC:wght@500&display=swap");
+input[type=text],
+input[type=email],
+input[type=password],
+input[type=date],
+input[type=file],
+input[type=search] {
+  background-color: #66de93;
+  border-radius: 0.3rem;
+  padding: 0.3rem;
+  text-align: center;
+  font-family: "Noto Sans TC", sans-serif;
+  outline: none;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+input[type=text]:hover,
+input[type=email]:hover,
+input[type=password]:hover,
+input[type=date]:hover,
+input[type=file]:hover,
+input[type=search]:hover {
+  -webkit-transition: all 1s;
+  transition: all 1s;
+  outline: none;
+  background: #cfdac8;
+}
+
+button[type=submit] {
+  background: #cfdac8;
+  font-family: "Nanum Gothic", sans-serif;
+  padding: 0.4rem;
+  border-radius: 0.5rem;
+  outline: none;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+button[type=submit]:hover {
+  -webkit-transition: all 1s;
+  transition: all 1s;
+  background: #66de93;
+  cursor: pointer;
+}
+
+header {
+  background-color: pink;
+}
+header #count {
+  position: absolute;
+  left: 40 !important;
+  top: 2;
+  border-radius: 50%;
+  padding: 0.1rem;
+  padding-left: 0.2rem;
+  padding-right: 0.2rem;
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  font-family: "Noto Sans TC", sans-serif;
+  font-size: 13px;
+}
+
+footer {
+  background-color: #66de93;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+footer span {
+  font-family: "Noto Sans TC", sans-serif;
+}
+
+body {
+  background-color: #66de93;
+}
+
+main #sidebar {
+  background-color: white !important;
+  margin-top: 3rem;
+  border-radius: 1rem;
+}
+main #sidebar img {
+  max-width: 17vw !important;
+  max-height: 19vh !important;
+  margin-top: 3rem;
+}
+main #sidebar h5 {
+  font-family: "Noto Sans TC", sans-serif;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+main #accordion-menu {
+  margin-top: 3rem !important;
+  max-width: 25vw;
+  border-radius: 1rem;
+  background-color: #cfdac8;
+  margin-bottom: 4rem;
+}
+main #accordion-menu button {
+  margin-top: 1rem;
+  border-radius: 0.5rem;
+  background-color: #66de93;
+  font-family: "Nanum Gothic", sans-serif;
+  cursor: pointer;
+}
+main li {
+  margin-top: 1rem;
+  list-style-type: none;
+  margin-right: 2rem;
+}
+main li a {
+  text-decoration: none;
+  color: white;
+  font-family: "Noto Sans TC", sans-serif;
+}
