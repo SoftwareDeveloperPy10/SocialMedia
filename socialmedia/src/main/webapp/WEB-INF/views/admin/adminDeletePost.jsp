@@ -1,3 +1,8 @@
+<%@page import="com.proje.socialmedia.app.utils.PostType"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+    <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="en">
 
@@ -17,7 +22,7 @@
 
 
 
-    <link rel="stylesheet" href="../../../../resources/static/css/adminIndex.css" />
+    <link rel="stylesheet" href="../css/adminIndex.css" />
 
     <title> ADMİN | DELETE POSTS </title>
 </head>
@@ -85,7 +90,7 @@
 
                     <!-- ADMİN SİDEBAR -->
 
-                    <img src="../../../../resources/static/images/adminimages/admin.jpg" title="admin" alt="admin"
+                    <img src="../images/adminimages/admin.jpg" title="admin" alt="admin"
                         class=" rounded-circle" />
 
                     <h5> NAME SURNAME </h5>
@@ -203,21 +208,25 @@
                         <table class="table table-hover table-dark">
                             <thead>
                                 <tr>
+                                    <th scope="col">MEDİA</th>
                                     <th scope="col">USERNAME</th>
-                                    <th scope="col">Posts</th>
-                                    <th scope="col">Register Date</th>
+                                    <th scope="col"> CONTENT </th>
                                     <th scope="col">Details</th>
                                 </tr>
                             </thead>
                             <tbody>
+                            <c:forEach items="${postList }" var="post">
+                            
                                 <tr>
-                                    <td>Mark</td>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td> <button type="button" class="btn-danger px-2 py-1 btn-delete" data-id="1"> <i
+                                    <td> <img src="../images/postimages/${post.getPost_url()}" alt="${post.getPost_url()}" title="${post.getPost_url()}" style="max-width: 7vw;max-height: 7vh;" /> </td>
+                                    <td>${post.getUser().getUsername() }</td>
+                                    <td>${post.getPost_content() }</td>
+                                   
+                                    <td> <button type="button" class="btn-danger px-2 py-1 btn-delete" data-id="${post.getPostid() }"> <i
                                                 class="fas fa-trash-alt"></i> </button> </td>
                                 </tr>
-
+							</c:forEach>
+                            
                             </tbody>
                         </table>
                     </div>
@@ -261,7 +270,7 @@
         crossorigin="anonymous"></script>
 
 
-    <script src="../../../../resources/static/js/deletePost.js">
+    <script src="../js/deletePost.js">
 
     </script>
 

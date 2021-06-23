@@ -40,7 +40,7 @@ public class Post {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date postdate;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER,cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH,CascadeType.DETACH})
 	@JoinColumn(name="kullaniciid")
 	private User user;
 	
