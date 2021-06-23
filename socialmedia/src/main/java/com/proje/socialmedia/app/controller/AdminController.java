@@ -16,9 +16,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.proje.socialmedia.app.model.Admin;
+import com.proje.socialmedia.app.model.Footer;
+import com.proje.socialmedia.app.model.Header;
 import com.proje.socialmedia.app.model.Post;
 import com.proje.socialmedia.app.model.User;
 import com.proje.socialmedia.app.service.AdminService;
+import com.proje.socialmedia.app.service.FooterService;
+import com.proje.socialmedia.app.service.HeaderService;
 import com.proje.socialmedia.app.service.PostService;
 import com.proje.socialmedia.app.service.SubscribeService;
 import com.proje.socialmedia.app.service.UserService;
@@ -40,6 +44,13 @@ public class AdminController {
 	
 	@Autowired
 	private AdminService adminService;
+	
+	@Autowired
+	private HeaderService headerService;
+	
+	
+	@Autowired
+	private FooterService footerService;
 	
 	
 	@GetMapping("/index")
@@ -207,4 +218,63 @@ List<User> userList= null;
 	}
 	
 	
+	 @GetMapping("/headerSettings")
+	 public String headerSettings() {
+		 return "admin/adminCiteSettingsHeader";
+	 }
+	
+	 
+	 @PostMapping("/header")
+	 public String header(@RequestParam(name="photo",required = true) MultipartFile file) {
+		 
+		 if(file != null) {
+			 
+			 
+			 String fileUrl = StringUtils.cleanPath(file.getOriginalFilename());
+			 
+			 Header header = headerService.getHeaderById(1);
+			 
+			 header.setBrand(fileUrl);
+			 
+			 headerService.updateHeader(header);
+			 
+			 return "redirect:/admin/headerSettings?succ=1";
+			 
+			 
+		 }
+		 return "redirect:/admin/headerSettings?err=1";
+		 
+	 }
+	 
+	 @GetMapping("/footerSettings")
+	 public String footerSettings() {
+		 return "admin/footerSettings";
+	 }
+	 
+	 
+	 @PostMapping("updateFooter")
+	 public String updateFooter(@RequestParam(name="facebook",required = true) String facebook, 
+			 @RequestParam(name="gismap") String gismap) {
+		 
+		 if(facebook != null && gismap != null) {
+			 
+			 Footer footer = footerService.getFooterById(1);
+			 
+			 footer.setFacebook(facebook);
+			 footer.setGismap(gismap);
+			 
+			 
+			 footerService.updateFooter(footer);
+			 
+			 return "redirect:/admin/footerSettings?succ=1";
+			 
+			 
+		 }else {
+			 return "redirect:/admin/footerSettings?err=1";
+			 
+		 }
+		 
+		 
+	 }
+	 
 }
