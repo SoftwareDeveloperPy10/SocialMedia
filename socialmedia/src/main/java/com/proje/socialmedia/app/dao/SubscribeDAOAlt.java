@@ -16,5 +16,6 @@ public interface SubscribeDAOAlt{
 	
 	List<Subscribe> getSubList(int subAccountId);
 	
+	boolean deleteSubAccountAndSubScribe(int userId);
 	
 }

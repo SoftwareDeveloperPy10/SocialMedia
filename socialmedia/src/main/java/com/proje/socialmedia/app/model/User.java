@@ -3,6 +3,7 @@ package com.proje.socialmedia.app.model;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -37,18 +39,45 @@ public class User {
 	@Temporal(TemporalType.DATE)
 	private Date user_bof;
 	
-	@OneToMany(mappedBy = "subscriber")
+	@OneToMany(mappedBy = "subscriber",cascade = CascadeType.REMOVE)
 	private List<Subscribe> subscribeList;
 
 	
-	@OneToMany(mappedBy = "user",fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "user",fetch = FetchType.EAGER,cascade = CascadeType.REMOVE)
 	private List<Post> postList;
+	
+	@OneToOne(mappedBy = "subaccount")
+	private Subscribe subAccount;
 	
 	public User() {
 	
 	}
 	
 	
+
+	
+
+
+
+	public Subscribe getSubAccount() {
+		return subAccount;
+	}
+
+
+
+
+
+
+
+	public void setSubAccount(Subscribe subAccount) {
+		this.subAccount = subAccount;
+	}
+
+
+
+
+
+
 
 	public List<Post> getPostList() {
 		return postList;

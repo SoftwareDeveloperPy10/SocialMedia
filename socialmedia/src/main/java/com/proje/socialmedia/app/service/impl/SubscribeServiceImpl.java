@@ -76,6 +76,12 @@ public class SubscribeServiceImpl implements SubscribeService{
 
 		return altDAO.getSubList(subAccountId);
 	}
+
+	@Override
+	public boolean deleteSubAccountAndSubScribe(int userId) {
+		// TODO Auto-generated method stub
+		return altDAO.deleteSubAccountAndSubScribe(userId);
+	}
 	
 	
 	

@@ -25,4 +25,6 @@ public interface SubscribeService {
 	List<Subscribe> getSubList(int subAccountId);
 	
 	
+	boolean deleteSubAccountAndSubScribe(int userId);
+	
 }

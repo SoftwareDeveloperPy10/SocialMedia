@@ -6,6 +6,7 @@ import javax.persistence.TypedQuery;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -104,6 +105,36 @@ public class SubscribeAltDAOImpl implements SubscribeDAOAlt{
 		
 		
 	
+	}
+
+	@Override
+	public boolean deleteSubAccountAndSubScribe(int userId) {
+		// TODO Auto-generated method stub
+		
+		
+		try {
+			Session session = sessionFactory.openSession();
+			Transaction transaction = session.beginTransaction();
+			TypedQuery query = session.createQuery("delete from Subscribe  where subscriber.kullaniciid= :sub OR subaccount.kullaniciid= :suc");
+			
+			query.setParameter("sub", userId);
+			
+			query.setParameter("suc", userId);
+			
+			query.executeUpdate();
+			
+			transaction.commit();
+
+			session.close();
+			return true;
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return false;
+		}
+		
+		
+		
 	}
 	
 	
