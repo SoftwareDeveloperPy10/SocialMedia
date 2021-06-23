@@ -1,3 +1,9 @@
+<%@page import="com.proje.socialmedia.app.utils.PostType"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+    <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+    
 <!doctype html>
 <html lang="en">
 
@@ -13,13 +19,13 @@
         integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <link rel="stylesheet" href="../../../../resources/static/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../css/owl.carousel.min.css">
 
-    <link rel="stylesheet" href="../../../../resources/static/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="../css/owl.theme.default.min.css">
 
 
 
-    <link rel="stylesheet" href="../../../../resources/static/css/adminIndex.css" />
+    <link rel="stylesheet" href="../css/adminIndex.css" />
 
     <title> ADMİN DASHBOARD </title>
 </head>
@@ -266,7 +272,7 @@
 
                                     <div class="card" style="width: 9rem;">
                                         <img class="card-img-top rounded-circle"
-                                            src="../../../resources/static/images/storyimages/story1.jpg" alt="Story 1"
+                                            src="../images/storyimages/story1.jpg" alt="Story 1"
                                             title="Story 1">
                                         <div class="card-body">
                                             <span> USERNAME </span>
@@ -413,7 +419,7 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
 
-    <script src="../../../../resources/static/js/owl.carousel.min.js"> </script>
+    <script src="../js/owl.carousel.min.js"> </script>
 
     <script>
 
