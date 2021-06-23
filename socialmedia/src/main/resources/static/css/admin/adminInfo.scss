@@ -1,0 +1,14 @@
+@import "../abstract/variables";
+@import "../base/typography";
+@import "../component/inputs";
+
+h5 {
+    font-family: $primary-font;
+    margin-top: 10%;
+}
+
+#pass,
+#file {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}

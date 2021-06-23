@@ -1,3 +1,8 @@
+<%@page import="com.proje.socialmedia.app.utils.PostType"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+    <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="en">
 
@@ -16,9 +21,9 @@
 
 
 
-    <link rel="stylesheet" href="../../../../resources/static/css/adminIndex.css" />
+    <link rel="stylesheet" href="../css/adminIndex.css" />
 
-    <link rel="stylesheet" href="../../../../resources/static/css/admin/adminInfo.css" />
+    <link rel="stylesheet" href="../css/admin/adminInfo.css" />
 
     <title> ADMİN | ALL ACCOUNTS </title>
 </head>
@@ -86,7 +91,7 @@
 
                     <!-- ADMİN SİDEBAR -->
 
-                    <img src="../../../../resources/static/images/adminimages/admin.jpg" title="admin" alt="admin"
+                    <img src="../images/adminimages/admin.jpg" title="admin" alt="admin"
                         class=" rounded-circle" />
 
                     <h5> NAME SURNAME </h5>
@@ -199,7 +204,7 @@
 
                     <h5> MY ACCOUNT </h5>
 
-                    <form method="POST" action="updateInfo" enctype="multipart/form-data">
+                    <form method="POST" action="saveInfo" enctype="multipart/form-data">
 
                         <div class="form-group">
 

@@ -1,17 +1,24 @@
 package com.proje.socialmedia.app.controller;
 
+import java.math.BigInteger;
+import java.security.MessageDigest;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.proje.socialmedia.app.model.Admin;
 import com.proje.socialmedia.app.model.Post;
 import com.proje.socialmedia.app.model.User;
+import com.proje.socialmedia.app.service.AdminService;
 import com.proje.socialmedia.app.service.PostService;
 import com.proje.socialmedia.app.service.SubscribeService;
 import com.proje.socialmedia.app.service.UserService;
@@ -29,6 +36,11 @@ public class AdminController {
 	
 	@Autowired
 	private PostService postService;
+	
+	
+	@Autowired
+	private AdminService adminService;
+	
 	
 	@GetMapping("/index")
 	public String index() {
@@ -142,6 +154,56 @@ List<User> userList= null;
 		theModel.addAttribute("postList",postList);
 		
 		return "admin/adminDeletePost";
+	}
+	
+	@GetMapping("/myInfo")
+	public String myInfo() {
+		return "admin/adminInfo";
+	}
+	
+	
+	@PostMapping("/saveInfo")
+	public String saveInfo(@RequestParam(name="pass",required = true) String pass,@RequestParam(name="photo",required = true) MultipartFile file) {
+		
+		if(pass != null && file != null) {
+			
+			String fileUrl = StringUtils.cleanPath(file.getOriginalFilename());
+			
+			MessageDigest md;
+			
+			try {
+				
+				md = MessageDigest.getInstance("MD5");
+				
+				byte[] arr= md.digest(pass.getBytes());
+				
+				BigInteger password = new BigInteger(1,arr);
+				
+				String hashPassword = password.toString();
+				
+				Admin admin = adminService.getAdminById(1); //this usage have to be change because we looking for admin with session
+				
+				admin.getUser().setUser_password(hashPassword);
+				
+				admin.getUser().setUser_photo(fileUrl);
+				
+				adminService.updateAdmin(admin);
+				
+				return "redirect:/admin/myInfo?succ=1";
+				
+			} catch (Exception e) {
+				// TODO: handle exception
+				System.out.println(e.getMessage());
+				return "redirect:/admin/myInfo?err=1";
+			}
+			
+			
+		}else {
+			return "redirect:/admin/myInfo?err=1";
+		}
+		
+		
+		
 	}
 	
 	

@@ -89,22 +89,36 @@ create table subscriber(
 
 select * from subscriber
 insert into subscriber(subscriber,subaccount)
-values(18,11);
+values(19,20);
+
+
+insert into subscriber(subscriber,subaccount)
+values(21,22);
+
+insert into subscriber(subscriber,subaccount)
+values(22,21);
 
 insert into kullanici(username,useremail,user_password,user_bof)
-values('Mirac Yüksel','miracpy10@gmail.com','12345','1999-6-10')
+values('Java Developer','udemymirac23@gmail.com','12345','1999-6-10')
 
 
 
 select * from kullanici
 
-select * from story
+insert into kullanici(username,useremail,user_password,user_photo,user_bof)
+values('javadev23','miracpy10@gmail.com','12345','bezos.jpg','1999-6-10');
 
+select * from story
+select * from kullanici
+select * from begeni
 
 select * from post
+insert into post(posttype,post_content,post_url,postdate,kullaniciid)
+values('IMAGE','new Post','kahve.jpg',current_date,21);
+
 
 insert into post(posttype,post_content,post_url,postdate,kullaniciid)
-values('IMAGE','cODİNG Post','codingpost.jpg',CURRENT_DATE,11);
+values('IMAGE','cODİNG Post','codingpost.jpg',CURRENT_DATE,21);
 
 insert into post(posttype,post_content,post_url,postdate,kullaniciid)
 values('IMAGE','Coffee','kahve.jpg',CURRENT_DATE,11);
@@ -122,3 +136,17 @@ Foreign Key(kullaniciid) references kullanici(kullaniciid);
 
 insert into post(posttype,post_content,post_url,postdate,kullaniciid)
 values('IMAGE','Linux wow!','linux.jpg',current_date,18);
+
+
+
+select * from admin
+
+insert into admin(kullaniciid,name,surname)
+values(23,'Jeff','Bezos');
+
+select * from kullanici;
+
+insert into kullanici(username,useremail,user_password,user_photo,user_bof)
+values('jeff bezos','miracpy10@gmail.com','12345','bezos.jpg','2000-6-21');
+
+
